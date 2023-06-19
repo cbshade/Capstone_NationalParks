@@ -16,6 +16,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React and create capstone project 2
+          Learn React and create capstone project 2.1
         </a>
       </header>
     </div>
