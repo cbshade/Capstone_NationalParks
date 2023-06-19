@@ -1,9 +1,21 @@
 import './App.css';
+import Navbar from './Navbar';
+import React, { useState } from 'react';
+import Body from './Body';
 
 function App() {
+
+  const [page, setPage] = useState("Home");
+
+  
+
   return (
     <div className="App">
-      <h1>New Appliction</h1>
+      <div>
+        <h2>{page}</h2>
+      </div>
+      <Navbar setPage={setPage} />
+      <Body page={page}/>
     </div>
   );
 }
