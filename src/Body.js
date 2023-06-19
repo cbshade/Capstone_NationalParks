@@ -6,12 +6,12 @@ import Mountain from './components/pages/Mountains';
 
 export default function Body(props) {
 
-    
+
 
     const pages = {
-        home: <Home />,
-        parks: <Park />,
-        mountains: <Mountain />
+        Home: <Home />,
+        Parks: <Park />,
+        Mountains: <Mountain />
     }
 
     return (
