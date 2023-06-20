@@ -1,12 +1,12 @@
 import React from "react";
-import MountainList from "../../MountainList";
+import MountainSelect from "../../MountainSelect";
 
 export default function Mountain() {
   return (
     <>
       <h1>This is Mountain Page</h1>
       <div>
-        <MountainList></MountainList>
+        <MountainSelect />
       </div>
     </>
   );

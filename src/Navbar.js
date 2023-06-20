@@ -21,7 +21,7 @@ export default function Navbar(props) {
                     </li>
                     <li>
                         <a href="#" onClick={() => props.setPage("Mountains")}>
-                            Mountians
+                            Mountains
                         </a>
                     </li>
                 </ul>
