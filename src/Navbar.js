@@ -1,5 +1,6 @@
 import React from 'react';
-
+import './Navbar.css';
+import Logo from './components/images/logo.png';
 export default function Navbar(props) {
 
     
@@ -7,7 +8,8 @@ export default function Navbar(props) {
 
     return (
         <>
-            <div>
+            <nav className='container'>
+            <div className="site-title">National Adventures</div>
                 <ul>
                     <li>
                         <a href="#" onClick={() => props.setPage("Home")}>
@@ -25,7 +27,7 @@ export default function Navbar(props) {
                         </a>
                     </li>
                 </ul>
-            </div>
+            </nav>
         </>
 
     )

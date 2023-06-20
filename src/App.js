@@ -11,9 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <h2>{page}</h2>
-      </div>
+
       <Navbar setPage={setPage} />
       <Body page={page}/>
     </div>
