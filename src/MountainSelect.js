@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import mountains from "../src/components/data/mountains.json";
 
-const mountainList = [{ mountains }]
+
+const mountainList = [mountains]
+
+console.log(mountainList);
 
 function MountainSelect() {
     const [filteredMountains, setFilteredMountains] = useState(mountainList)
 
     const filterByName = name => {
         setFilteredMountains(
-            mountainList.filter(name => mountainList.name === name)
+            mountainList[0].mountains.filter(mountain => mountain.name === name)
         )
     }
 
     // Using Set to filter unique values
     const names = Array.from(
-        new Set(mountainList.map(mountains => mountains.name))
+        new Set(mountainList[0].mountains.map(mountain => mountain.name))
     )
 
     return (
@@ -29,23 +32,24 @@ function MountainSelect() {
                 })}
             </select>
             <ul>
-                {filteredMountains.map(mountains => {
-                    const { name, elevation, effort, img, desc } = mountains
-                return (
-                <li key={name}>
-                    <div>
-                        <h2>{mountains.name}</h2>
-                        <img src={mountains.img} alt={mountains.name} />
-                        <p>Description: {mountains.desc}</p>
-                        <p>Effort: {mountains.effort}</p>
-                        <p>Elevation: {mountains.elevation}</p>
-                    </div>
-                </li>
-                )
-          })}
+                {filteredMountains.map(mountain => {
+                    const { name, elevation, effort, img, desc } = mountain
+                    return (
+                        <li key={name}>
+                            <div>
+                                <h2>{name}</h2>
+                                <img src={img} alt={name} />
+                                <p>Description: {desc}</p>
+                                <p>Effort: {effort}</p>
+                                <p>Elevation: {elevation}</p>
+                            </div>
+                        </li>
+                    )
+                })}
             </ul>
         </div>
     )
 };
+
 
 export default MountainSelect;
