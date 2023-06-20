@@ -33,17 +33,20 @@ function MountainSelect() {
             </select>
             <ul>
                 {filteredMountains.map(mountain => {
-                    const { name, elevation, effort, img, desc } = mountain
+                    const { name, elevation, effort, img, desc, coords } = mountain
                     return (
-                        <li key={name}>
+                        <div key={name}>
                             <div>
                                 <h2>{name}</h2>
                                 <img src={img} alt={name} />
                                 <p>Description: {desc}</p>
                                 <p>Effort: {effort}</p>
                                 <p>Elevation: {elevation}</p>
+                                <span>Latitude: {coords.lat}</span>
+                                <br></br>
+                                <span>Longitude: {coords.lng}</span>
                             </div>
-                        </li>
+                        </div>
                     )
                 })}
             </ul>
