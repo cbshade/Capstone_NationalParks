@@ -4,9 +4,9 @@ This is the second capstone project for Libert Mutual's full stack engineering p
 
 ## Team Members
 
-Joshua Benedict
-Keira McLean
-Chris Shade
+Joshua Benedict\
+Keira McLean\
+Chris Shade\
 
 ### Our Site
 
