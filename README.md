@@ -6,7 +6,7 @@ This is the second capstone project for Libert Mutual's full stack engineering p
 
 Joshua Benedict\
 Keira McLean\
-Chris Shade\
+Chris Shade
 
 ### Our Site
 
