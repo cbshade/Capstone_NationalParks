@@ -1,9 +1,11 @@
 import React from "react";
 import NationalParks from "../../NationalParks";
+import LocationSelect from "../../LocationSelect";
 
 export default function Park() {
   return (
     <>
+      <LocationSelect />
       <table>
         <tr>
           <th>Location Name</th>
