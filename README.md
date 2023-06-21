@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# Capstone Project: Enjoy the Outdoors
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the second capstone project for Libert Mutual's full stack engineering program for 2023.  
 
-## Available Scripts
+## Team Members
 
-In the project directory, you can run:
+Joshua Benedict
+Keira McLean
+Chris Shade
 
-### `npm start`
+### Our Site
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Our site is deployed on Netlify: https://dazzling-meringue-5b5a01.netlify.app/.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Project Requirements
+### Implementation Details
+Below you will find implentation requirements and details about the **National Parks search page**, **Mountains Information page**, **stretch goals**, and general implementation hints.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### National Parks Search Page 
+This page will allow the user to search for national parks that they might be interested in.  The parks are provided to you in `nationalparks.json`.  Spend some time examining this file.
 
-### `npm run build`
+Ultimately, the user would like to have two ways to search for a national park:
+ - **By location** 
+ - **By park type**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Search by Location** - This option allows users to select the state/territory from a [dropdown](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select). Values for the state/territory dropdown will be provided for you in `locations.json`.  **You will know a park matches the location by comparing it to the park's State" property**. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> **NOTE:** Search by Location is the most important search option and should be highest priority to complete.
 
-### `npm run eject`
+**Search by Park Type** - This option allows users to select a description from a [dropdown](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select). Values for the park type dropdown will be provided for you in `parktypes.json`.  **You will know a park matches the description by checking to see if the park's "LocationName" property ***contains*** the description**. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+One of the challenges will be how the user is presented two search options populated with the appropriate values. Do you use [radio buttons](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio) to select the search type?  Do you use a [dropdown](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) with the search types as [options](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option)?
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Nationa Parks Search Page Stretch Goals
+Challenge yourself with some of the stretch goals below. **These stretch gaols should be treated as the lowest priortiy tasks**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+-	Provide a View All National Parks option.
+- Some, but not all National Parks, contain a **"Visit"** property that contains a URL to a page about the park. You can display the URL in a hyperlink (ex: [<a>](https://mdn.io/a) tag) along with park details so the user can click on it and visit the park's page from your list.  Make sure to open the visited page in a different tab/window!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### IMPLEMENTATION HINTS
 
-## Learn More
+-	You will need to include data from three JSON data files loaded into your application.
+- Get the two search options to load their respective options before getting the actual search working. Options include:
+  - Using radio buttons to select search type (By Location/By Park Type) and then hide/show different dropdowns with search criteria in them when the radio buttons are clicked
+  - Using a dropdown to select search type (By Location/By Park Type) and then hide/show different dropdowns with search criteria in them when the search type selection changes
+  - You might also decide to use only one search criteria dropdown and dynamically load its options with states or park types based on the search type selection.
+- **Suggestion:** Get the "Search by Location" feature working first.
+- When you are working on the "Search by Park Type", you need to make sure the two strings have the same casing when you search.  The easiest way to do this is to use the `String` objects [`.toLowerCase()`](https://mdn.io/toLowerCase)  (or [`.toUpperCase()`](https://mdn.io/toUpperCase) ) to make the strings the same case.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Mountains Information Page
+This page will provide a drop down list of the 48 mountains listed in `mountains.json.` Make sure to spend some time examining this file.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+When the user selects a mountain, your page will display information about that mountain, including:
 
-### Code Splitting
+- Mountain Name
+- Description
+- Elevation
+- Any other information you find interesting about the Mountain. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+> **NOTE:** This page will NOT allow the user to search mountains using any type of filter.
 
-### Analyzing the Bundle Size
+#### Mountain Information Page Stretch Goals
+Challenge yourself with some of the stretch goals below. **These stretch gaols should be treated as the lowest priortiy tasks**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Display an image of the mountain along with the mountain information. 
+- Impress the user by displaying the sunrise and sunset time "today" for any mountain along with the other mountain data.
+  ```js
 
-### Making a Progressive Web App
+  //function that can "fetch" the sunset/sunrise times
+  async function getSunsetForMountain(lat, lng){
+      let response = await fetch(`http://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&date=today`)
+      let data = await response.json()
+      return data
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  //Using the function to fetch the sunset/sunrise times for a specific mountain 
+  getSunsetForMountain("44.320686", "-71.291742").then(sunsetData => {
+      console.log(sunsetData.results)
+  });
+  ```
 
-### Advanced Configuration
+> NOTE(S): the lat and lng values are included in the mountain data. The times returned are in UTC are not adjusted for local summer variations. Label the output as UTC time when you display them. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## What Makes A Good Capstone Project?
 
-### Deployment
+**You Should:**  
+- Build a consistent look-and-feel throughout the site with intuitive navigation
+- Implement at least the required pages 
+- Have a responsive user interface 
+- Build a public repo for your code, use an appropriate branching strategy, and have a commit history with meaningful commit messages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Implement best practices:**  
+- Have a good directory structures (ex: css, images and scripts folders) 
+- Use good file naming conventions (ex: lowercase file names with no spaces)
+- Have well-formatted HTML, CSS and JavaScript (indentions, blank lines, etc)
+- Use good names for your HTML elements and JavaScript variables/functions
+- Use HTML, CSS and JavaScript comments effectively
+- Make sure there are no JavaScript errors at run time (check the Console tab in the browser frequently)
