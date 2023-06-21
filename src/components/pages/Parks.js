@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import NationalParksData from "../../../src/components/data/nationalparks.json";
 import LocationsData from "../../../src/components/data/locations.json";
+import ParkTypesData from "../../../src/components/data/parktypes.json";
+import './Parks.css';
 
-const filteredLocations = NationalParksData.parks.filter(
-  (location) => location.State === "selected state"
-);
 
 export default function Park() {
-  return (
+
+  const [selectedValue, setSelectedValue] = useState("");
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+  
+  const filteredLocations = NationalParksData.parks.filter(
+    (location) => location.State === selectedValue
+  );
+
+  const filteredParkTypes = NationalParksData.parks.filter(
+    (ParkType) => ParkType.LocationName.includes(selectedValue)
+  );
+  
+  
+return(
     <>
     <div>
-        <select>
+        <select onChange={handleChange}>
           <option value="" disabled default selected>
             Select by Location
           </option>
@@ -21,8 +36,20 @@ export default function Park() {
           ))}
         </select>
       </div>
+      <div>
+        <select onChange={handleChange}>
+          <option value="" disabled default selected>
+            Select by Park Type
+          </option>
+          {ParkTypesData.map((ParkType) => (
+            <option key={ParkType} value={ParkType}>
+              {ParkType}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <table class="styled-table">
+      <table className="styled-table">
         <thead>
           <tr>
             <th>Location Name</th>
@@ -34,8 +61,7 @@ export default function Park() {
           </tr>
         </thead>
         <tbody>
-
-      {filteredLocations.map((park, i) => {
+      {filteredParkTypes.map((park, i) => {
         return (
           <tr key={i}>
             <td>{park.LocationName}</td>
