@@ -1,4 +1,5 @@
 import React from "react";
+import SunInfo from "./SunInfo";
 
 
 function ShowMountain(props) {
@@ -6,16 +7,17 @@ function ShowMountain(props) {
     <>
       <ul>
         {props.mountains.map((mountain) => {
-          const { name, elevation, effort, img, desc } = mountain;
+          const { name, elevation, effort, img, desc, coords } = mountain;
           return (
             <div key={name}>
-              <div>
                 <h2>{name}</h2>
                 <img src={img} alt={name} />
                 <p>Description: {desc}</p>
                 <p>Effort: {effort}</p>
                 <p>Elevation: {elevation}</p>
-              </div>
+                <p>Latitude: {coords.lat}</p>
+                <p>Longitude: {coords.lng}</p>
+                <SunInfo />
             </div>
           );
         })}
