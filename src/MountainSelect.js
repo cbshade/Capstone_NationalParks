@@ -31,7 +31,7 @@ function MountainSelect() {
           return <option key={name}>{name}</option>;
         })}
       </select>
-      
+
       {showMountain && <ShowMountain mountains={filteredMountains} />}
     </div>
   );

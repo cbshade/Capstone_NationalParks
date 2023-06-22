@@ -16,7 +16,7 @@ export default function Park() {
     <>
 
       <div className="App">
-        <h3>Select Search Option</h3>
+        <h1>Search National Parks</h1>
 
         <input type="radio" name="type" value="ViewAll" id="viewall"
           checked={searchOption === "ViewAll"} onChange={onOptionChange} />

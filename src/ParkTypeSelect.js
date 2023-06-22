@@ -3,7 +3,6 @@ import NationalParksData from "../src/components/data/nationalparks.json";
 import ParkTypesData from "../src/components/data/parktypes.json"
 import './Parks.css';
 
-
 export default function ParkTypeSelect() {
 
   const [selectedValue, setSelectedValue] = useState("");
@@ -11,17 +10,13 @@ export default function ParkTypeSelect() {
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
-  
-
 
   const filteredParkTypes = NationalParksData.parks.filter(
     (ParkType) => ParkType.LocationName.includes(selectedValue)
   );
-  
-  
-return(
-    <>
 
+  return (
+    <>
       <div>
         <select onChange={handleChange}>
           <option value="" disabled default selected>
@@ -47,18 +42,18 @@ return(
           </tr>
         </thead>
         <tbody>
-      {filteredParkTypes.map((park, i) => {
-        return (
-          <tr key={i}>
-            <td>{park.LocationName}</td>
-            <td>{park.Address}</td>
-            <td>{park.City}</td>
-            <td>{park.State}</td>
-            <td>{park.ZipCode}</td>
-            <td>{park.Phone}</td>
-          </tr>
-        );
-      })}
+          {filteredParkTypes.map((park, i) => {
+            return (
+              <tr key={i}>
+                <td>{park.LocationName}</td>
+                <td>{park.Address}</td>
+                <td>{park.City}</td>
+                <td>{park.State}</td>
+                <td>{park.ZipCode}</td>
+                <td>{park.Phone}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </>

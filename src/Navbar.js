@@ -1,10 +1,6 @@
 import React from 'react';
 import './Navbar.css';
-//import Logo from './components/images/logo.png';
 export default function Navbar(props) {
-
-
-
 
     return (
         <>
