@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import mountains from "../src/components/data/mountains.json";
+import ShowMountain from "./ShowMountain";
 
 const mountainList = [mountains];
 
-console.log(mountainList);
-
 function MountainSelect() {
   const [filteredMountains, setFilteredMountains] = useState(mountainList);
+  const [showMountain, setShowMountain] = useState(false);
 
   const filterByName = (name) => {
     setFilteredMountains(
       mountainList[0].mountains.filter((mountain) => mountain.name === name)
     );
+    setShowMountain(true);
   };
 
   // Using Set to filter unique values
@@ -30,25 +31,8 @@ function MountainSelect() {
           return <option key={name}>{name}</option>;
         })}
       </select>
-      <ul>
-        {filteredMountains.map((mountain) => {
-          const { name, elevation, effort, img, desc } = mountain;
-          return (
-            <div key={name}>
-              <div>
-                <h2>{name}</h2>
-                <img src={img} alt={name} />
-                <p>Description: {desc}</p>
-                <p>Effort: {effort}</p>
-                <p>Elevation: {elevation}</p>
-                {/* <span>Latitude: {coords.lat}</span>
-                <br></br>
-                <span>Longitude: {coords.lng}</span> */}
-              </div>
-            </div>
-          );
-        })}
-      </ul>
+      
+      {showMountain && <ShowMountain mountains={filteredMountains} />}
     </div>
   );
 }
