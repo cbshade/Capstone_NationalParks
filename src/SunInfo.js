@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-function SunInfo() {
+function SunInfo(props) {
     const [sunset, setSunset] = useState("");
+    const [sunrise, setSunrise] = useState("");
 
     useEffect(() => {
         async function getSunsetForMountain(lat, lng) {
@@ -10,13 +11,18 @@ function SunInfo() {
             return data
         }
 
-        getSunsetForMountain("44.320686", "-71.291742").then(sunsetData => {
+        getSunsetForMountain(props.lat, props.lng).then(sunsetData => {
             setSunset(sunsetData.results.sunset);
+            setSunrise(sunsetData.results.sunrise);
         });
-    }, [])
+
+    }, [props.lat, props.lng])
 
     return (
-        <p>Sunset (UTC): {sunset}</p>
+        <>
+            <p>Sunrise (UTC): {sunrise}</p>
+            <p>Sunset (UTC): {sunset}</p>
+        </>
     )
 }
 export default SunInfo;

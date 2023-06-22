@@ -17,7 +17,7 @@ function ShowMountain(props) {
                 <p>Elevation: {elevation}</p>
                 <p>Latitude: {coords.lat}</p>
                 <p>Longitude: {coords.lng}</p>
-                <SunInfo />
+                <SunInfo lat={coords.lat} lng={coords.lng}/>
             </div>
           );
         })}
