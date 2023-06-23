@@ -15,6 +15,9 @@ export default function Images() {
                 <span className="images">
                   <h3>{mountain.name}</h3>
                   <img src={mountain.img} alt={mountain.name} />
+                  <iframe className='map'                 
+                  src={`https://maps.google.com/maps?q=${mountain.coords.lat},${mountain.coords.lng}&hl=en&z=14&output=embed`}>
+                  </iframe>
                 </span>
               </div>
             );

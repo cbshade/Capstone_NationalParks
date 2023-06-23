@@ -1,5 +1,11 @@
 .images {
     display: flexbox;
-    float: left;
+    float: center;
     padding: 3rem;
+}
+
+.map {
+    display: inline-block;
+    height: 220px;
+    margin-left: 22px;
 }
