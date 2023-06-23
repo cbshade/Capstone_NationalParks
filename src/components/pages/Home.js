@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from '../images/logo.png';
+import Images from '../../CarouselImages';
 
 
 export default function Home() {
@@ -19,6 +20,9 @@ export default function Home() {
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                     non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
+            </div>
+            <div>
+                <Images />
             </div>
         </>
     )

@@ -1,0 +1,5 @@
+.images {
+    display: flexbox;
+    float: left;
+    padding: 3rem;
+}
